@@ -41,20 +41,25 @@ def main():
 
         print("pods found: %s" % len(ret.items))
 
-        for i in ret.items:
-            print("Removing pod %s" % (i.metadata.name))
 
-        watch = True
+        ### When you delete the job the pod will be deleted automatically
 
-        try:
-            api_response = v1.delete_collection_namespaced_pod(data["namespace"],
-                                                               pretty=pretty,
-                                                               label_selector=label_selector,
-                                                               watch=watch)
 
-            print(common.parseJson(api_response))
-        except ApiException:
-            log.exception("Exception when calling CoreV1Api->delete_collection_namespaced_pod:")
+        # for i in ret.items:
+            # print("Removing pod %s" % (i.metadata.name))
+
+
+        # watch = True
+
+        # try:
+        #     api_response = v1.delete_collection_namespaced_pod(data["namespace"],
+        #                                                        pretty=pretty,
+        #                                                        label_selector=label_selector,
+        #                                                        watch=watch)
+
+        #     print(common.parseJson(api_response))
+        # except ApiException:
+        #     log.exception("Exception when calling CoreV1Api->delete_collection_namespaced_pod:")
 
 
         body = client.V1DeleteOptions(api_version='v1', kind="DeleteOptions", propagation_policy="Background")

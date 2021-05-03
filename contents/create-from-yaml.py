@@ -107,7 +107,8 @@ def main():
                 body=dep,
                 pretty="true")
 
-            print(common.parseJson(resp.status))
+            print(resp.status)
+            # print(common.parseJson(resp.status))
 
         if data["type"] == "Secret":
             dep = yaml.safe_load(data["yaml"])
